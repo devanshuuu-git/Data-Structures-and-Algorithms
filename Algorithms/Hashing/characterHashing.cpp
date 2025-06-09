@@ -3,6 +3,7 @@ using namespace std;
 
 int main(){
     string s;
+    cout<<"Input String: ";
     cin>>s;
 
     int hash[26]={0};
@@ -11,13 +12,15 @@ int main(){
     }
 
     int q;
+    cout<<"Number Of Querry: ";
     cin>>q;
 
     while(q--){
         char c;
+        cout<<"Input Querry Char: ";
         cin>>c;
 
-        cout<<hash[c-'a']<<endl;
+        cout<<"Frequency Of The Char: "<<hash[c-'a']<<endl;
 
     }
 }

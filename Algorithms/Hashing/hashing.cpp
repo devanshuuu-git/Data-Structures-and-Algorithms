@@ -2,36 +2,33 @@
 using namespace std;
 
 
-
-
 int main(){
 
     int n;
-    cout<<"Size of Array:"<<endl;
+    cout<<"Input Size Of Array: ";
     cin>>n;
 
     int arr[n];
-    cout<<"Input Array:"<<endl;
     for(int i=0;i<n;i++){
+        cout<<"Input Array: ";
         cin>>arr[i];
     }
 
-    int hash[100]={0};
-    for(int i=0;i<n;i++){
+    //precompute
+    int hash[15]={0};
+     for(int i=0;i<n;i++){
         hash[arr[i]]++;
     }
 
-
     int q;
-    cout<<"No. of Queries:"<<endl;
+    cout<<"Number Of Querry: ";
     cin>>q;
-     
+
     while(q--){
         int number;
-        cout<<"Enter Number:"<<endl;
+        cout<<"Input Querry Number: ";
         cin>>number;
-
-        cout<<"count:"<<hash[number]<<endl;
+        cout<<"Frequency Of The Number: "<<hash[number]<<endl;
     }
 
     return 0;
