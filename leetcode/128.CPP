@@ -40,8 +40,8 @@ int longestConsecutive(vector<int>& nums) {
         cin>>x;
         nums.push_back(x);
     }
-    int ans = longestConsecutive(nums);
-    cout<<ans;
+    int abc = longestConsecutive(nums);
+    cout<<abc;
     
  
 
