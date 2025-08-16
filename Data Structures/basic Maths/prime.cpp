@@ -20,7 +20,7 @@ bool Prime(int n){
 
 
 int main(){
-    int n;
+    int n,m;
     cin>>n;
 
     
