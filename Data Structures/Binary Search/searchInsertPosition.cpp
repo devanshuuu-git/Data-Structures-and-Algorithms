@@ -7,7 +7,7 @@ using namespace std;
 
 
 
-int SearchInsertPosition(int arr[], int n, int k){
+int SearchInsertPosition(vector<int> &arr, int n, int k){
     int low = 0;
     int high = n-1;
     int ans = n;
@@ -27,15 +27,18 @@ int SearchInsertPosition(int arr[], int n, int k){
 
 
 int main(){
+
 int n;
 int k;
 cout<<"Array Size:"<<endl;
 cin>>n;
 
 cout<<"Input Array:"<<endl;
-int arr[n];
+vector<int> arr;
 for(int i=0;i<n;i++){
-    cin>>arr[i];
+    int x;
+    cin>>x;
+    arr.push_back(x);
 }
 
 cout<<"Input Target:"<<endl;
@@ -43,5 +46,5 @@ cin>>k;
 
 
 int ans = SearchInsertPosition(arr,n,k);
-cout<<"lower Bound at Index: "<<ans;
+cout<<" Insertion at Index: "<<ans;
 }
