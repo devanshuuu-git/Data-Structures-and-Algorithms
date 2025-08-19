@@ -1,26 +1,48 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
-// lower bound -> smallest index such that arr[ind]> x
+
+// recusive approach
+int Search(vector<int> &arr, int low, int high, int k){
+    if (low > high) {
+        return low;  // if there is element represents lower bound it will return n
+    }
+
+    int mid = low + (high - low) / 2;
+
+    if (arr[mid] <= k) {
+        
+        return Search(arr, mid + 1, high, k);
+    } else {
+       // arr[mid]>k 
+        return Search(arr, low, mid - 1, k);
+    }
+}   
+
+int upperBoundSearch(vector<int> &arr, int n, int k){
+    return Search(arr, 0, n-1, k);
+}
 
 
 
-int UpperBound(int arr[], int n, int k){
-    int low = 0;
-    int high = n-1;
+// iterative approach
+int upperBound(vector<int> arr, int n, int x) {
+    int low = 0, high = n - 1;
     int ans = n;
-    while(low<=high){
-        int mid = (low+high)/2;
-        if (arr[mid] > k){
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        // maybe an answer
+        if (arr[mid] > x) {
             ans = mid;
-            high = mid-1;
-        } 
-        else{
-            low = mid +1;
+            //look for smaller index on the left
+            high = mid - 1;
+        }
+        else {
+            low = mid + 1; // look on the right
         }
     }
-    return  ans;
-
+    return ans;
 }
 
 
@@ -31,16 +53,18 @@ cout<<"Array Size:"<<endl;
 cin>>n;
 
 cout<<"Input Array:"<<endl;
-int arr[n];
-for(int i=0;i<n;i++){
-    cin>>arr[i];
-}
+vector<int> arr;
+
+    for(int i=0;i<n;i++){
+        int x;
+        cin>>x;
+        arr.push_back(x);
+    }
 
 cout<<"Input Target:"<<endl;
 cin>>k;
 
 
-int ans = UpperBound(arr,n,k);
-cout<<"Upper Bound at Index:"<<ans;
+cout<<upperBoundSearch(arr,n,k);
 
 }
