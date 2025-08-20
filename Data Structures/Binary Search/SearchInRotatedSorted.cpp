@@ -2,33 +2,32 @@
 using namespace std;
 
 
-int SearchInRotated(int arr[], int n, int k){
+int SearchInRotated(vector<int> &arr, int n, int k){
     int low = 0;
     int high = n-1;
 
     while(low<=high){
-        int mid = (low+high)/2;
-        if(arr[mid]==k){
+        int mid = low +((high-low)/2);
+
+        if(arr[mid] == k){
             return mid;
         }
-        if(arr[low]<=arr[mid]){    // checks the left half is sorted or not, if it is not then else is exected where right half is taken
-            if(arr[low]<=k && k<=arr[mid]){
+        else if(arr[low] <= arr[mid]){
+            if(arr[low] <= k && k <= arr[mid]){
                 high = mid-1;
-            }
-            else{
+            }else{
                 low = mid+1;
             }
         }
         else{
-            if(arr[mid]<=k && k<=arr[high]){
+            if(arr[mid] <= k && k <=arr[high]){
                 low = mid+1;
-            }
-            else{
+            }else{
                 high = mid-1;
             }
         }
     }
-    return -1;   
+    return -1;
 }
 
 
@@ -36,9 +35,11 @@ int main(){
     int n;
     int k;
     cin>>n;
-    int arr[n];
+    vector<int> arr;
     for(int i=0;i<n;i++){
-        cin>>arr[i];
+        int x;
+        cin>>x;
+        arr.push_back(x);
     }
     cin>>k;
 
