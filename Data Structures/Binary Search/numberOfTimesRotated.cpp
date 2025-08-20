@@ -1,29 +1,38 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int MinimumRotated(vector<int> &arr,int n){
+int rotationCount(vector<int> &arr,int n){
     int low=0;
     int high=n-1;
     int ans=INT_MAX;
-
+    int index = -1;
     while(low<=high){
         
         int mid = low +((high-low)/2);
 
         if(arr[low] <= arr[high]){
-            ans = min(ans,arr[low]);
-            break;
+            if(arr[low]<ans){
+                index = low;
+                ans = arr[low];
+                break;
+            }
         }
         if(arr[low]<=arr[mid]){
-            ans = min(ans,arr[low]);
+            if(arr[low]<ans){
+                index = low;
+                ans = arr[low];
+            }
             low = mid+1;
         }
         else{
-            ans = min(ans,arr[mid]);
+            if(arr[mid]<ans){
+                index = mid;
+                ans = arr[mid];
+            }
             high = mid-1;
         }
     }
-    return ans;
+    return index;
 }
 
 int main(){
@@ -37,6 +46,6 @@ int main(){
     }
    
 
-   cout<<MinimumRotated(arr,n);
+   cout<<rotationCount(arr,n);
     
 }
