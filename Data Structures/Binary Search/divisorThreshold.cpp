@@ -39,7 +39,7 @@ int smallestDivisor(vector<int>& nums, int threshold) {
             low = mid+1;
         }
             
-    }
+      }
     return ans;
 }
 int main(){
